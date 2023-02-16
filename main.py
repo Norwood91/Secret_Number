@@ -42,6 +42,14 @@ def main():
         print('Thanks for playing! See you next time!')
 
 
+def getSecretNum():
+    """Returns a string of numbers for the secret number to guess"""
+    numbers = [0,1,2,3,4,5,6,7,8,9]
+    random.shuffle(numbers)
+    secretNum = ''
+    for i in range(NUM_OF_DIGITS_FOR_SECR_NUM):
+        secretNum += str(numbers[i])
+    return secretNum
 
 
 
