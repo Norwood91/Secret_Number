@@ -29,7 +29,6 @@ def main():
             num_of_guesses += 1
 
             if guess == num_to_guess:
-                print('You guessed correctly! You WIN!')
                 break # They're correct, so break out of the loop
             if num_of_guesses > MAX_NUM_OF_GUESSES:
                 print('You ran out of guesses... You LOSE!')
@@ -43,7 +42,7 @@ def main():
 
 
 def getSecretNum():
-    """Returns a string of numbers for the secret number to guess"""
+    """Returns a string of numbers that represents the secret num to guess"""
     numbers = [0,1,2,3,4,5,6,7,8,9]
     random.shuffle(numbers)
     secretNum = ''
@@ -52,12 +51,28 @@ def getSecretNum():
     return secretNum
 
 
+def getClues(guess, num_to_guess):
+    """Returns a string with the Pico, Fermi, or Bagels clues for a guess"""
+    if guess == num_to_guess:
+        return 'You got it!'
 
+    clues = []
+    for i in range(len(guess)):
+        if guess[i] == num_to_guess[i]:
+            # Means a correct digit is in the correct place
+            clues.append('Fermi')
+        elif guess[i] in num_to_guess:
+            # Means a correct digit is in the incorrect place
+            clues.append('Pico')
 
-
-
-
-
+    if len(clues) == 0:
+        # Means there are NO correct digits at all
+        return 'Bagels'
+    else:
+        # Sort the clues into alphabetical order so their original order doesn't give away info
+        clues.sort()
+        # return a string from the list of string clues
+        return ' '.join(clues)
 
 
 if __name__ == "__main__":
