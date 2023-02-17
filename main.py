@@ -35,10 +35,11 @@ def main():
                 print(f'The answer was {num_to_guess}')
 
         # Ask player if they want to play again
-        play_again = input('Do you want to play again? Type yes or no').lower()
-        if play_again != 'yes':
+        play_again = input('Do you want to play again? Type yes or no: ').lower()
+        if play_again == 'no':
             break
-        print('Thanks for playing! See you next time!')
+            print('Thanks for playing! See you next time!')
+
 
 
 def getSecretNum():
